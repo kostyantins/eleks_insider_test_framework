@@ -13,6 +13,9 @@ import java.net.URL;
 
 public class WebDriverFactory {
 
+    private WebDriverFactory() {
+    }
+
     private static ThreadLocal<WebDriver> driver;
 
     public static WebDriver getDriver() {
