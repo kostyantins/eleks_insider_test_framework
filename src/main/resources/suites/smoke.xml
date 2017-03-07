@@ -3,7 +3,8 @@
 <suite name="Smoke Suite">
     <test name="Smoke Tests">
         <classes>
-            <class name="tests.LogoExistTest"/>
+            <class name="tests.Test1"/>
+          <!--   <class name="tests.LogoExistTest"/>
             <class name="tests.ValidUserLogInTest"/>
             <class name="tests.InvalidUserLogInTest"/>
             <class name="tests.LanguageChangingTest"/>
@@ -12,7 +13,7 @@
             <class name="tests.CountryPhoneCodeChangingTest"/>
             <class name="tests.LoginPageMaskTest"/>
             <class name="tests.CreateAccountPageMaskTest"/>
-            <class name="tests.RemindPasswordPageMaskTest"/>
+            <class name="tests.RemindPasswordPageMaskTest"/> -->
         </classes>
     </test>
 </suite>
