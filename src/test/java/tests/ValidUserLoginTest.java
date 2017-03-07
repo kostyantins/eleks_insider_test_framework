@@ -7,7 +7,7 @@ import util.TestRunner;
 import static asserts.HardWebElementAsserts.assertThat;
 import static pageobjects.HomePage.eleksInsiderLogo;
 
-public class validUserLoginTest extends TestRunner {
+public class ValidUserLoginTest extends TestRunner {
 
     @Test
     public final void testValidUserLogin() {

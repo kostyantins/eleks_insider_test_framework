@@ -9,7 +9,7 @@ import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
 @Getter
-public class LoginPage extends AbstractPageObject {
+public class LogInPage extends AbstractPageObject {
 
     @Name("User login input field")
     @FindBy(id = "userLogin")
@@ -24,7 +24,7 @@ public class LoginPage extends AbstractPageObject {
     @Name("Login button")
     @FindBy(id = "LoginButton")
     @Timeout(30)
-    private Button loginButton;
+    public static Button loginButton;
 
     @Step
     public final HomePage doLogIn(final String userName, final String userPass) {

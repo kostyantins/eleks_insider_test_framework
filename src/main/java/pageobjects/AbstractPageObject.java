@@ -14,7 +14,6 @@ import static util.WebDriverFactory.getDriver;
 @Getter
 public abstract class AbstractPageObject {
 
-
     public AbstractPageObject() {
 
         PageFactory.initElements(new HtmlElementDecorator(new HtmlElementLocatorFactory(getDriver())), this);
@@ -92,13 +91,21 @@ public abstract class AbstractPageObject {
                 .perform();
     }
 
-//    @Step
-//    public final LoginPage doLogOut() {
-//
-//        final UserAccountPage userAccountPage = new UserAccountPage();
-//
-//        clickTo(userAccountPage.getLogOutLink());
-//
-//        return new LogInPage();
-//    }
+    @Step
+    public final void goBack() {
+
+        getDriver()
+                .navigate()
+                .back();
+    }
+
+    @Step
+    public final LogInPage logOut() {
+
+        final HomePage homePage = new HomePage();
+
+        clickTo(homePage.getLogOutLink());
+
+        return new LogInPage();
+    }
 }

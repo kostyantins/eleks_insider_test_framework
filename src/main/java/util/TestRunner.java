@@ -17,7 +17,7 @@ import static util.WebDriverFactory.setDriver;
 @Getter
 public class TestRunner {
 
-    protected LoginPage loginPage;
+    protected LogInPage loginPage;
     protected HomePage homePage;
     protected BusinessPage businessPage;
     protected EducationPage educationPage;
@@ -45,7 +45,7 @@ public class TestRunner {
         getDriver()
                 .get(homePageUrl);
 
-        loginPage = new LoginPage();
+        loginPage = new LogInPage();
     }
 
     @Step
