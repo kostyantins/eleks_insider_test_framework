@@ -16,7 +16,7 @@ import org.testng.TestListenerAdapter;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
 
-public class SimplyTestListenerAdapter extends TestListenerAdapter {
+public class Listener extends TestListenerAdapter {
 
 	@Step
 	@Override
@@ -32,7 +32,7 @@ public class SimplyTestListenerAdapter extends TestListenerAdapter {
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		FileWriter fw;
+		FileWriter fileWriter;
 		
 		Runtime runtime = Runtime.getRuntime();
 		DateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
@@ -40,21 +40,21 @@ public class SimplyTestListenerAdapter extends TestListenerAdapter {
 		calendar.setTimeInMillis(result.getStartMillis());
 		try {
 			InetAddress address = InetAddress.getLocalHost();
-			fw = new FileWriter("src/main/resources/environment.properties");
-			fw.write("Web: Eleks Insider \n");
-			fw.write("OSname: " + System.getProperty("os.name") + "\n");
-			fw.write("OSversion: " + System.getProperty("os.version") + "\n");
-			fw.write("OSbyte: " + System.getProperty("os.arch") + "\n");
-			fw.write("HostName: " + System.getProperty("user.name")+"\n");			
-			fw.write("TestStarted:" + formatter.format(calendar.getTime()) + "\n");			
-			fw.write("HostAddress: "+ address.getHostAddress() + "\n");
-			fw.write("HostName: "+ address.getHostName() + "\n");
-			fw.write("QAAutomationTesters: "+ "Halyna Leshchyshyn, Kostyantin Sichenko" + "\n");
-			fw.write("CanonicalHostName: "+ address.getCanonicalHostName() + "\n");
-			fw.write("LocalHost: "+ address.getLocalHost() + "\n");
-			fw.write("LoopbackAddress: "+ address.getLoopbackAddress() + "\n");
-			fw.write("JavaVersion: " + System.getProperty("java.runtime.version") + "\n");
-			fw.close();
+			fileWriter = new FileWriter("src/main/resources/environment.properties");
+			fileWriter.write("Web: Eleks Insider \n");
+			fileWriter.write("OSname: " + System.getProperty("os.name") + "\n");
+			fileWriter.write("OSversion: " + System.getProperty("os.version") + "\n");
+			fileWriter.write("OSbyte: " + System.getProperty("os.arch") + "\n");
+			fileWriter.write("HostName: " + System.getProperty("user.name")+"\n");
+			fileWriter.write("TestStarted:" + formatter.format(calendar.getTime()) + "\n");
+			fileWriter.write("HostAddress: "+ address.getHostAddress() + "\n");
+			fileWriter.write("HostName: "+ address.getHostName() + "\n");
+			fileWriter.write("QAAutomationTesters: "+ "Halyna Leshchyshyn, Kostyantin Sichenko" + "\n");
+			fileWriter.write("CanonicalHostName: "+ address.getCanonicalHostName() + "\n");
+			fileWriter.write("LocalHost: "+ address.getLocalHost() + "\n");
+			fileWriter.write("LoopbackAddress: "+ address.getLoopbackAddress() + "\n");
+			fileWriter.write("JavaVersion: " + System.getProperty("java.runtime.version") + "\n");
+			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

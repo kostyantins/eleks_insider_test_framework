@@ -146,7 +146,7 @@
 						</property>
 						<property>
 							<name>listener</name>
-							<value>util.SimplyTestListenerAdapter</value>
+							<value>util.Listener</value>
 						</property>
 					</properties>
 					<suiteXmlFiles>

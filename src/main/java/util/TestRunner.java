@@ -6,8 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pageobjects.HomePage;
-import pageobjects.LoginPage;
+import pageobjects.*;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import java.net.MalformedURLException;
@@ -20,6 +19,12 @@ public class TestRunner {
 
     protected LoginPage loginPage;
     protected HomePage homePage;
+    protected BusinessPage businessPage;
+    protected EducationPage educationPage;
+    protected EleksLifePage eleksLifePage;
+    protected PeoplePage peoplePage;
+    protected ProjectsPage projectsPage;
+    protected TechnologiesPage technologiesPage;
 
     @Step
     @Parameters({"browser", "version", "platform"})

@@ -1,25 +1,23 @@
 package tests;
 
 import org.testng.annotations.Test;
-
 import util.PropertiesReader;
 import util.TestRunner;
 
 import static asserts.HardWebElementAsserts.assertThat;
-import static pageobjects.HomePage.eleksParty;
+import static pageobjects.HomePage.eleksInsiderLogo;
 
-public class validUserLoginTest extends TestRunner{
-	
-	@Test
-	public final void testValidUserLogin(){
+public class validUserLoginTest extends TestRunner {
 
-		final String userName = PropertiesReader.getProperty("valid.email");
-		final String userPass = PropertiesReader.getProperty("valid.pass");
+    @Test
+    public final void testValidUserLogin() {
 
-		loginPage
-				.doLogIn(userName, userPass);
+        final String userName = PropertiesReader.getProperty("user.name");
+        final String userPass = PropertiesReader.getProperty("user.pass");
 
-		assertThat(eleksParty).isDisplayed();
-	}
+        loginPage
+                .doLogIn(userName, userPass);
 
+        assertThat(eleksInsiderLogo).isDisplayed();
+    }
 }

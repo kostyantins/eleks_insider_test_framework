@@ -29,9 +29,9 @@ public class LoginPage extends AbstractPageObject {
     @Step
     public final HomePage doLogIn(final String userName, final String userPass) {
 
-        fillInputAs(loginInput, "userName");
+        fillInputAs(loginInput, userName);
 
-        fillInputAs(passInput, "userPass");
+        fillInputAs(passInput, userPass);
 
         clickTo(loginButton);
 
