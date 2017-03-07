@@ -1,10 +1,10 @@
 Test automation framework for "ELEKS insider" application. 
 
-Technical deskription:
+Technical description:
 
-Selenium + WebDriver + TestNG
-Approach pattern - Page Object
-UI mapping - HTML Elements
-Loger - Allure
-Parallel - claster Selenium Grid
-Asserts - custom (AssertJ if need)
+Java + Selenium + WebDriver + TestNG
+Design pattern - Page Object
+UI mapping - Yandex HTML Elements
+Logger - Allure
+Parallel - cluster Selenium Grid
+Asserts - custom
