@@ -1,33 +1,26 @@
 package util;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 public class PropertiesReader {
 
-    private PropertiesReader() {
-    }
+	private static Properties properties;
 
-    private static final String CONFIG_PROPERTIES = "src//main/resources/config.properties";
+	private PropertiesReader() {
+	}
 
-    public static String getProperty(final String propertyName) {
+	public static String getProperty(final String propertyName) {
+		return properties.getProperty(propertyName);
+	}
 
-        String propertyValue = null;
-
-        try (final InputStream fileInputStream = new FileInputStream(CONFIG_PROPERTIES)) {
-
-            final Properties property = new Properties();
-
-            property.load(fileInputStream);
-
-            propertyValue = property.getProperty(propertyName);
-
-        } catch (final IOException e) {
-            System.out.println("property file is absent");
-        }
-
-        return propertyValue;
-    }
+	static {
+		properties = new Properties();
+		URL systemResource = ClassLoader.getSystemResource("config.properties");
+		try {
+			properties.load(systemResource.openStream());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
