@@ -1,0 +1,31 @@
+{
+  "capabilities":
+      [
+        {
+      "platform": "LINUX",
+      "browserName": "firefox",
+      "version": "46",
+      "maxInstances": 2,
+	  "seleniumProtocol": "WebDriver"
+		},
+		{
+      "platform": "LINUX",
+      "browserName": "chrome",
+      "version": "43",
+      "maxInstances": 2,
+      "seleniumProtocol": "WebDriver",
+      "webdriver.chrome.driver": "chromedriver_lin"
+		},	
+      ],
+    "configuration":
+        {
+		"proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+		"maxSession": 4,
+		"port": 5557,
+		"host": "localhost",
+		"register": true,
+		"registerCycle": 5000,
+		"hubPort": 4444,
+		"hubHost": "localhost"     
+        }
+}
