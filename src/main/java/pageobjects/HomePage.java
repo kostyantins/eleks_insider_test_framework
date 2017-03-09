@@ -1,5 +1,6 @@
 package pageobjects;
 
+import enums.PageObjects;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,24 +24,126 @@ public class HomePage extends AbstractPageObject {
     @Timeout(30)
     private Link logOutLink;
 
+    @Name("Business page link")
+    @FindBy(xpath = "(//*[@id='navigation-menu']//a)[3]")
+    @Timeout(30)
+    private Link businessPageLink;
+
+    @Name("Education page link")
+    @FindBy(xpath = "(//*[@id='navigation-menu']//a)[7]")
+    @Timeout(30)
+    private Link educationPageLink;
+
+    @Name("Eleks life page link")
+    @FindBy(xpath = "(//*[@id='navigation-menu']//a)[8]")
+    @Timeout(30)
+    private Link eleksLifePageLink;
+
+    @Name("People page link")
+    @FindBy(xpath = "(//*[@id='navigation-menu']//a)[6]")
+    @Timeout(30)
+    private Link peoplePageLink;
+
+    @Name("Technologies page link")
+    @FindBy(xpath = "(//*[@id='navigation-menu']//a)[4]")
+    @Timeout(30)
+    private Link technologiesPageLink;
+
+    @Name("Project page link")
+    @FindBy(xpath = "(//*[@id='navigation-menu']//a)[5]")
+    @Timeout(30)
+    private Link projectPageLink;
+
     @Name("User face")
     @FindBy(xpath = "//*[@id='user-menu']/div/a/div")
     @Timeout(30)
-    private WebElement userFace;
+    private WebElement userFaceBlock;
 
     @Step
-    public final LogInPage doLogOut() {
+    public final AbstractPageObject open(final PageObjects pageObject) {
 
-        logOut();
+        AbstractPageObject object = null;
+        final HomePage homePage = new HomePage();
 
-        return new LogInPage();
+        switch (pageObject) {
+
+            case HOME_PAGE:
+                object =  clickTo(eleksInsiderLogo);
+                break;
+
+            case BUSINESS_PAGE:
+                object = homePage.openBusinessPage();
+                break;
+
+            case EDUCATION_PAGE:
+                object = homePage.openEducationPage();
+                break;
+
+            case ELEKS_LIFE_PAGE:
+                object = homePage.openEleksLifePage();
+                break;
+
+            case PEOPLE_PAGE:
+                object = homePage.openPeoplePage();
+                break;
+
+            case PROJECTS_PAGE:
+                object = homePage.openProjectPage();
+                break;
+
+            case TECHNOLOGIES_PAGE:
+                object = homePage.openTechnologiesPage();
+                break;
+        }
+
+        return object;
     }
 
     @Step
-    public HomePage findLogOutButton() {
+    private BusinessPage openBusinessPage() {
 
-        moveToElement(userFace);
+        clickTo(businessPageLink);
 
-        return this;
+        return new BusinessPage();
+    }
+
+    @Step
+    private EducationPage openEducationPage() {
+
+        clickTo(educationPageLink);
+
+        return new EducationPage();
+    }
+
+    @Step
+    private EleksLifePage openEleksLifePage() {
+
+        clickTo(eleksLifePageLink);
+
+        return new EleksLifePage();
+    }
+
+    @Step
+    private PeoplePage openPeoplePage() {
+
+        clickTo(peoplePageLink);
+
+        return new PeoplePage();
+    }
+
+    @Step
+    private ProjectsPage openProjectPage() {
+
+        clickTo(projectPageLink);
+
+        return new ProjectsPage();
+    }
+
+    @Step
+    private TechnologiesPage openTechnologiesPage() {
+
+        clickTo(technologiesPageLink);
+
+        return new TechnologiesPage();
     }
 }

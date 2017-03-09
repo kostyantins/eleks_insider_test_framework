@@ -3,7 +3,7 @@ package pageobjects;
 import lombok.Getter;
 
 @Getter
-public class EducationPage extends AbstractPageObject {
+public class EducationPage extends AbstractPageObject  {
 
 
 }

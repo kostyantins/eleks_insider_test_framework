@@ -1,5 +1,7 @@
 package pageobjects;
 
+import enums.PageObjects;
+import enums.Users;
 import lombok.Getter;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -7,6 +9,7 @@ import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.annotations.Timeout;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.TextInput;
+import util.PropertiesReader;
 
 @Getter
 public class LogInPage extends AbstractPageObject {
@@ -27,14 +30,27 @@ public class LogInPage extends AbstractPageObject {
     public static Button loginButton;
 
     @Step
-    public final HomePage doLogIn(final String userName, final String userPass) {
+    public final HomePage doLogInAs(final Users user) {
 
-        fillInputAs(loginInput, userName);
+        final String userName = PropertiesReader.getProperty("user.name");
+        final String userPass = PropertiesReader.getProperty("user.pass");
 
-        fillInputAs(passInput, userPass);
+        switch (user) {
 
-        clickTo(loginButton);
+            case USER:
 
+                fillInputAs(loginInput, userName);
+                fillInputAs(passInput, userPass);
+                clickTo(loginButton);
+                break;
+
+            case ADMIN:
+// TODO chang admin credentials after test admin will be create
+                fillInputAs(loginInput, userName);
+                fillInputAs(passInput, userPass);
+                clickTo(loginButton);
+                break;
+        }
         return new HomePage();
     }
 }

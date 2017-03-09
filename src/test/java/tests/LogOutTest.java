@@ -1,6 +1,8 @@
 package tests;
 
+import enums.PageObjects;
 import org.testng.annotations.Test;
+import util.DataProvider;
 import util.PropertiesReader;
 import util.TestRunner;
 
@@ -9,16 +11,16 @@ import static pageobjects.LogInPage.loginButton;
 
 public class LogOutTest extends TestRunner {
 
-    @Test
-    public final void testLogOut() {
+    @Test(dataProvider = "testLogOutData", dataProviderClass = DataProvider.class)
+    public final void testLogOut(final PageObjects pageObject) {
 
         final String userName = PropertiesReader.getProperty("user.name");
         final String userPass = PropertiesReader.getProperty("user.pass");
 
         loginPage
-                .doLogIn(userName, userPass)
-                .findLogOutButton()
-                .doLogOut();
+                .doLogInAs(userName, userPass)
+                .open(pageObject)
+                .logOut();
 
         assertThat(loginButton).isDisplayed();
     }

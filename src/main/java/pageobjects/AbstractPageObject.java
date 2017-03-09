@@ -104,6 +104,8 @@ public abstract class AbstractPageObject {
 
         final HomePage homePage = new HomePage();
 
+        moveToElement(homePage.getUserFaceBlock());
+
         clickTo(homePage.getLogOutLink());
 
         return new LogInPage();
