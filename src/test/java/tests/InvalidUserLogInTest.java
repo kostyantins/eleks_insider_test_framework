@@ -5,12 +5,12 @@ import static pageobjects.LogInPage.invalidErrorLogin;
 
 import org.testng.annotations.Test;
 
-import util.DataProviderArraySyntaxTest;
+import util.DataProvider;
 import util.TestRunner;
 
 public class InvalidUserLogInTest extends TestRunner {
 
-	@Test(dataProvider = "testInvalidDataLogIn", dataProviderClass = DataProviderArraySyntaxTest.class)
+	@Test(dataProvider = "testInvalidDataLogIn", dataProviderClass = DataProvider.class)
 	public final void testInValidUserLogin (final String invalidEmail, final String invalidPass) {
 
 		loginPage

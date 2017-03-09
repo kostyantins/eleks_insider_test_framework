@@ -10,15 +10,14 @@ public class DataProvider {
     @org.testng.annotations.DataProvider
     public static Object[][] testInvalidDataLogIn() {
         return new Object[][]{
-                {"xxxxx@ukr.net", "qwerty"},
-                {"kostyantins@mail.ru", "123456"},
-                {"1234567890@mail.ru", "1q2w3e4r"},
                 {"", ""},
+                {PropertiesReader.getProperty("user.name"), ""},
+                {PropertiesReader.getProperty("user.name"), PropertiesReader.getProperty("user.name")},
+
+                {"", PropertiesReader.getProperty("user.pass")},
+                {PropertiesReader.getProperty("user.pass"), PropertiesReader.getProperty("user.pass")},
                 {"@#$!%^&*(){}|", "!@#$%^&*()_{}"},
-                {"kostyantins@mail.ru", ""},
-                {"", "qwerty"},
-                {"qwetryfufjcnbdhg", "qyetrgdbxvdferstahxneuyd"},
-                {"132445566778890", "122324354556576879"}
+                {"qwerty@eleks.com", "qwerty"}
         };
     }
 
